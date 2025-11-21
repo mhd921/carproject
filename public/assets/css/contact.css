@@ -1,0 +1,38 @@
+/* Contact page styles (scoped to .contact-form and related elements) */
+
+.contact-form {
+  background: transparent;
+}
+
+.contact-form .form-group { margin-bottom: 15px; }
+
+.contact-form .form-label {
+  display: block;
+  font-family: var(--ff-chakra-petch, 'Chakra Petch', sans-serif);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.contact-form .form-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--light-gray, #ccc);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--eerie-black, #222);
+  font: inherit;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.contact-form .form-input:focus {
+  border-color: var(--international-orange-engineering, #e53935);
+  box-shadow: 0 0 0 2px rgba(229, 57, 53, 0.12);
+}
+
+.contact-form .btn {
+  margin-top: 8px;
+}
+
+/* Optional: make the section title centered consistently */
+.section-title { text-align: center; }
