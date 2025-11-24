@@ -196,7 +196,7 @@ function Cars() {
             </button>
             <h2 id="carInfoTitle">{selectedCar.model}</h2>
             <p id="carInfoDesc">{selectedCar.description}</p>
-            <div id="carInfoSales" style={{ color: '#eebbc3', marginBottom: '10px' }}>
+            <div id="carInfoSales" style={{ color: 'var(--international-orange-engineering)', marginBottom: '10px' }}>
               {selectedCar.sales}
             </div>
             <img
