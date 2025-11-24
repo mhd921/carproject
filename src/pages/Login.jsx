@@ -15,7 +15,7 @@ function Login() {
       className="login-page"
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(to right, #1f1f3b, #3a3a5d)',
+        background: 'var(--login-page-bg)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,13 +26,13 @@ function Login() {
       <div
         className="container"
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.05)',
+          backgroundColor: 'var(--login-card-bg)',
           padding: '40px 30px',
           borderRadius: 12,
           boxShadow: '0 0 15px rgba(0,0,0,0.3)',
           width: '100%',
           maxWidth: 420,
-          color: '#fff',
+          color: 'var(--login-card-text)',
         }}
       >
         {/* Toggle between Login and Register forms via `mode` */}
@@ -51,7 +51,7 @@ function Login() {
                 required
                 value={login.username}
                 onChange={(e) => setLogin({ ...login, username: e.target.value })}
-                style={{ width: '100%', padding: 12, borderRadius: 8, border: 'none', outline: 'none' }}
+                style={{ width: '100%', padding: 12, borderRadius: 8, border: '1px solid var(--login-input-border)', outline: 'none', backgroundColor: 'var(--login-input-bg)', color: 'var(--login-input-text)' }}
               />
             </div>
             <div className="form-group" style={{ marginBottom: 18 }}>
@@ -66,14 +66,14 @@ function Login() {
                 required
                 value={login.password}
                 onChange={(e) => setLogin({ ...login, password: e.target.value })}
-                style={{ width: '100%', padding: 12, borderRadius: 8, border: 'none', outline: 'none' }}
+                style={{ width: '100%', padding: 12, borderRadius: 8, border: '1px solid var(--login-input-border)', outline: 'none', backgroundColor: 'var(--login-input-bg)', color: 'var(--login-input-text)' }}
               />
             </div>
             <button
               type="submit"
               className="btn"
               style={{
-                backgroundColor: '#e63946',
+                backgroundColor: 'var(--login-accent)',
                 border: 'none',
                 color: '#fff',
                 padding: 12,
@@ -96,7 +96,7 @@ function Login() {
                   e.preventDefault();
                   setMode('register');
                 }}
-                style={{ color: '#e63946', textDecoration: 'none', fontWeight: 'bold' }}
+                style={{ color: 'var(--login-accent)', textDecoration: 'none', fontWeight: 'bold' }}
               >
                 Register here
               </a>
@@ -117,7 +117,7 @@ function Login() {
                 required
                 value={register.username}
                 onChange={(e) => setRegister({ ...register, username: e.target.value })}
-                style={{ width: '100%', padding: 12, borderRadius: 8, border: 'none', outline: 'none' }}
+                style={{ width: '100%', padding: 12, borderRadius: 8, border: '1px solid var(--login-input-border)', outline: 'none', backgroundColor: 'var(--login-input-bg)', color: 'var(--login-input-text)' }}
               />
             </div>
             <div className="form-group" style={{ marginBottom: 18 }}>
@@ -132,7 +132,7 @@ function Login() {
                 required
                 value={register.email}
                 onChange={(e) => setRegister({ ...register, email: e.target.value })}
-                style={{ width: '100%', padding: 12, borderRadius: 8, border: 'none', outline: 'none' }}
+                style={{ width: '100%', padding: 12, borderRadius: 8, border: '1px solid var(--login-input-border)', outline: 'none', backgroundColor: 'var(--login-input-bg)', color: 'var(--login-input-text)' }}
               />
             </div>
             <div className="form-group" style={{ marginBottom: 18 }}>
@@ -147,14 +147,14 @@ function Login() {
                 required
                 value={register.password}
                 onChange={(e) => setRegister({ ...register, password: e.target.value })}
-                style={{ width: '100%', padding: 12, borderRadius: 8, border: 'none', outline: 'none' }}
+                style={{ width: '100%', padding: 12, borderRadius: 8, border: '1px solid var(--login-input-border)', outline: 'none', backgroundColor: 'var(--login-input-bg)', color: 'var(--login-input-text)' }}
               />
             </div>
             <button
               type="submit"
               className="btn"
               style={{
-                backgroundColor: '#e63946',
+                backgroundColor: 'var(--login-accent)',
                 border: 'none',
                 color: '#fff',
                 padding: 12,
@@ -177,7 +177,7 @@ function Login() {
                   e.preventDefault();
                   setMode('login');
                 }}
-                style={{ color: '#e63946', textDecoration: 'none', fontWeight: 'bold' }}
+                style={{ color: 'var(--login-accent)', textDecoration: 'none', fontWeight: 'bold' }}
               >
                 Login here
               </a>
