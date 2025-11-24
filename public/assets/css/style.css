@@ -90,6 +90,15 @@
   --transition: 0.25s ease;
   --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
 
+  /* Login page theming (light/default) */
+  --login-page-bg: linear-gradient(to right, #1f1f3b, #3a3a5d);
+  --login-card-bg: rgba(255, 255, 255, 0.05);
+  --login-card-text: #ffffff;
+  --login-input-bg: #ffffff;
+  --login-input-text: #232946;
+  --login-input-border: transparent;
+  --login-accent: #e63946;
+
 
 }
 
@@ -394,6 +403,22 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+/* Theme toggle button */
+.theme-toggle-btn {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-inline-start: 12px;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-circle);
+  background: transparent;
+  transition: var(--transition);
+}
+
+.theme-toggle-btn:hover { transform: translateY(-3px); border-color: var(--white); }
 
 
 .modal {
@@ -1579,17 +1604,83 @@ body {
 
   .footer-top .container { padding-inline-start: 20%; }
 
-
 }
 
+/*-----------------------------------*\
+  #THEME: DARK
+\*-----------------------------------*/
+
+body.theme-dark {
+  background-color: var(--oxford-blue-3);
+  color: #e5e7eb;
+  /* Login page variables (dark) */
+  --login-page-bg: linear-gradient(to right, #0b1220, #111827);
+  --login-card-bg: rgba(15, 23, 42, 0.85);
+  --login-card-text: #e5e7eb;
+  --login-input-bg: #0b1220;
+  --login-input-text: #e5e7eb;
+  --login-input-border: #334155;
+}
+
+/* Darken the home hero background with an overlay for readability */
+body.theme-dark .hero.has-bg-image {
+  background-image: linear-gradient(to bottom, rgba(2, 6, 23, 0.75), rgba(2, 6, 23, 0.75)), url('/assets/images/hero-bg.jpg') !important;
+}
+
+body.theme-dark .header { background-color: var(--oxford-blue-1); }
+
+/* Mobile dropdown navbar background */
+body.theme-dark .navbar { background-color: var(--oxford-blue-2); }
+
+/* Typography adjustments */
+body.theme-dark .h2,
+body.theme-dark .h3,
+body.theme-dark .section-title { color: #e5e7eb; }
+body.theme-dark .section-text { color: #cbd5e1; }
+body.theme-dark .card-text { color: #cbd5e1; }
+
+/* Links in nav */
+body.theme-dark .navbar-link { color: #e6edf3; }
+body.theme-dark .navbar-link:is(:hover, :focus-visible) {
+  background-color: #0b1220;
+  color: #eebbc3;
+}
+
+/* Cards and surfaces */
+body.theme-dark .work-card .card-content {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+/* Modals & forms */
+body.theme-dark .modal-content { background: #0f172a; color: #e5e7eb; }
+body.theme-dark #loginForm input,
+body.theme-dark #registerForm input {
+  background: #0b1220;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+}
+
+/* Services page dark adjustments */
+body.theme-dark .section.service.has-bg-image {
+  background-image: none !important;
+  background-color: var(--oxford-blue-2);
+}
+body.theme-dark .service-card {
+  background-color: #0f172a;
+  border: 1px solid #1f2937;
+}
+body.theme-dark .service-card .card-title { color: #e5e7eb; }
+body.theme-dark .service .btn-link { color: var(--international-orange-engineering); }
 
 /*-----------------------------------*\
   #CARS PAGE (scoped)
 \*-----------------------------------*/
 
 .cars-page {
-  background-color: hsl(222, 47%, 15%);
-  color: #fff;
+  background-color: var(--white);
+  color: var(--eerie-black);
   min-height: 100vh;
 }
 
@@ -1608,9 +1699,10 @@ body {
 }
 
 .cars-page .car {
-  background: #232946;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   width: 270px;
   padding: 20px 18px 18px 18px;
   text-align: center;
@@ -1619,7 +1711,7 @@ body {
 }
 
 .cars-page .car:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   transform: translateY(-4px) scale(1.03);
 }
 
@@ -1635,26 +1727,26 @@ body {
 .cars-page .car-model {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #eebbc3;
+  color: var(--international-orange-engineering);
   margin: 10px 0 8px 0;
 }
 
 .cars-page .car p {
   font-size: 1rem;
-  color: #b8c1ec;
+  color: var(--sonic-silver);
   margin-bottom: 10px;
 }
 
-.cars-page .hr { border-bottom: 1px solid #eebbc3; margin: 10px 0; }
+.cars-page .hr { border-bottom: 1px solid var(--light-gray); margin: 10px 0; }
 .cars-page .sales { margin-bottom: 12px; }
-.cars-page .sales p { color: #eebbc3; font-size: 0.98rem; }
-.cars-page .sales a { color: #eebbc3; text-decoration: underline; transition: color 0.2s; }
-.cars-page .sales a:hover { color: #fff; }
+.cars-page .sales p { color: var(--international-orange-engineering); font-size: 0.98rem; }
+.cars-page .sales a { color: var(--international-orange-engineering); text-decoration: underline; transition: color 0.2s; }
+.cars-page .sales a:hover { color: var(--eerie-black); }
 
 .cars-page button,
 .cars-page .booking-btn {
-  background: #eebbc3;
-  color: #232946;
+  background: var(--international-orange-engineering);
+  color: var(--white);
   border: none;
   border-radius: 6px;
   padding: 8px 22px;
@@ -1666,7 +1758,7 @@ body {
 }
 
 .cars-page button:hover,
-.cars-page .booking-btn:hover { background: #fff; color: #232946; }
+.cars-page .booking-btn:hover { background: var(--oxford-blue-3); color: var(--white); }
 
 .cars-page #searchInput {
   display: block;
@@ -1674,15 +1766,51 @@ body {
   padding: 10px 16px;
   width: 320px;
   border-radius: 6px;
-  border: 1px solid #eebbc3;
+  border: 1px solid var(--light-gray);
   font-size: 1rem;
-  background: #232946;
-  color: #fff;
+  background: var(--white);
+  color: var(--eerie-black);
   outline: none;
   transition: border 0.2s;
 }
 
-.cars-page #searchInput:focus { border: 1.5px solid #fff; }
+.cars-page #searchInput:focus { border: 1.5px solid var(--international-orange-engineering); }
+
+body.theme-dark .cars-page {
+  background-color: var(--oxford-blue-3);
+  color: #e5e7eb;
+}
+
+body.theme-dark .cars-page .car {
+  background: #0f172a;
+  border: 1px solid #1f2937;
+}
+
+body.theme-dark .cars-page .car-model { color: var(--international-orange-engineering); }
+
+body.theme-dark .cars-page .car p {
+  color: #cbd5e1;
+}
+
+body.theme-dark .cars-page .sales p { color: var(--international-orange-engineering); }
+body.theme-dark .cars-page .sales a { color: var(--international-orange-engineering); }
+body.theme-dark .cars-page .sales a:hover { color: var(--white); }
+
+body.theme-dark .cars-page button,
+body.theme-dark .cars-page .booking-btn { background: var(--international-orange-engineering); color: var(--white); }
+
+body.theme-dark .cars-page button:hover,
+body.theme-dark .cars-page .booking-btn:hover { background: var(--oxford-blue-1); color: var(--white); }
+
+body.theme-dark .cars-page #searchInput {
+  background: #0b1220;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+}
+
+body.theme-dark .cars-page #searchInput:focus {
+  border: 1.5px solid #fff;
+}
 
 @media (max-width: 900px) {
   .cars-page .cars { flex-direction: column; align-items: center; }
@@ -1702,15 +1830,15 @@ body {
 }
 
 .cars-modal-content {
-  background: #2f2f5f;
-  color: #fff;
+  background: var(--white);
+  color: var(--eerie-black);
   border-radius: 12px;
   max-width: 420px;
   width: 92%;
   margin: auto;
   padding: 32px 24px;
   position: relative;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
 }
 
 .cars-modal-close {
@@ -1725,7 +1853,7 @@ body {
 
 /* Modal inner elements */
 .cars-modal-content h2 {
-  color: #eebbc3;
+  color: var(--international-orange-engineering);
   margin-bottom: 18px;
   text-align: center;
   font-family: var(--ff-chakra-petch, 'Chakra Petch', sans-serif);
@@ -1740,10 +1868,10 @@ body {
 .cars-modal-content form input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #eebbc3;
+  border: 1px solid var(--light-gray);
   border-radius: 6px;
-  background: #fff;
-  color: #232946;
+  background: var(--white);
+  color: var(--eerie-black);
 }
 
 .cars-modal-content form input::placeholder { color: #6f6f6f; }
@@ -1751,8 +1879,8 @@ body {
 .cars-modal-content form button[type="submit"] {
   width: 100%;
   padding: 10px 0;
-  background: #eebbc3;
-  color: #232946;
+  background: var(--international-orange-engineering);
+  color: var(--white);
   border: none;
   border-radius: 6px;
   font-size: 1rem;
