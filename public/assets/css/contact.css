@@ -36,3 +36,11 @@
 
 /* Optional: make the section title centered consistently */
 .section-title { text-align: center; }
+
+/* Dark mode: inputs and text */
+body.theme-dark .contact-form .form-input {
+  background: #0b1220;
+  color: #e5e7eb;
+  border: 1px solid #334155;
+}
+body.theme-dark .contact-form .form-input::placeholder { color: #9aa7b3; }
