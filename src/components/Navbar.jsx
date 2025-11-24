@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // Navbar renders the site header with logo and navigation links.
@@ -14,9 +14,26 @@ function Navbar() {
   const location = useLocation();
   const solidBg = location.pathname !== '/';
 
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+    } catch {}
+    const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
+  });
+
+  useEffect(() => {
+    const isDark = theme === 'dark';
+    document.body.classList.toggle('theme-dark', isDark);
+    try { localStorage.setItem('theme', theme); } catch {}
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
+
   return (
     // Solid background on non-home routes for readability
-    <header className="header" style={solidBg ? { backgroundColor: 'hsl(222, 47%, 15%)' } : undefined}>
+    <header className="header" style={(solidBg || theme === 'dark') ? { backgroundColor: 'hsl(222, 47%, 15%)' } : undefined}>
       <div className="container">
         <Link to="/" className="logo" onClick={handleNavClick}>
           <img src="/assets/images/logo.png" width="128" height="63" alt="autofix home" />
@@ -45,7 +62,9 @@ function Navbar() {
             </li>
           </ul>
         </nav>
-
+        <button className="theme-toggle-btn" aria-label="Toggle theme" onClick={toggleTheme}>
+          <span className="material-symbols-rounded">{theme === 'dark' ? 'light_mode' : 'dark_mode'}</span>
+        </button>
         {/* Mobile menu toggle button controls the 'active' class above */}
         <button className={`nav-toggle-btn ${open ? 'active' : ''}`} aria-label="toggle menu" aria-expanded={open} onClick={toggle} data-nav-toggler="true">
           <span className="nav-toggle-icon icon-1"></span>
